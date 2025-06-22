@@ -2,9 +2,14 @@
 #include <iostream>
 #include <string>
 
+void run(std::string code) { std::cout << "run :: Code written." << code; }
+
 void runFile(std::string fileName) {
   std::ifstream allBytes(fileName);
   if (allBytes.is_open()) {
+    std::string buff;
+    allBytes >> buff;
+    run(buff);
     std::cout << "Now printing...." << std::endl;
   } else {
     std::cerr << "Error : Could Not Open file" << std::endl;
@@ -12,13 +17,24 @@ void runFile(std::string fileName) {
   std::cout << "Called runFile.";
 }
 
-void runPrompt() { std::cout << "Called runPrompt"; }
+void runPrompt() {
+  std::string buffer;
+  std::cin >> buffer;
+
+  for (;;) {
+    std::cout << "> " << std::endl;
+    if (buffer.empty())
+      break;
+    run(buffer);
+  }
+  std::cout << "Called runPrompt";
+}
 
 int main(int argc, char *argv[]) {
   // int number;
   std::cout << "argc value: " << argc << std::endl;
   std::cout << "arg value" << argv[0] << std::endl;
-  if (argc == 1) {
+  if (argc > 2) {
     std::cout << "Usage: cpplox [script]" << std::endl;
     return 0;
   } else if (argc == 2) {
