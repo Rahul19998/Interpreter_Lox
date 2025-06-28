@@ -19,10 +19,10 @@ void runFile(std::string fileName) {
 
 void runPrompt() {
   std::string buffer;
-  std::cin >> buffer;
 
   for (;;) {
     std::cout << "> " << std::endl;
+    std::cin >> buffer;
     if (buffer.empty())
       break;
     run(buffer);
