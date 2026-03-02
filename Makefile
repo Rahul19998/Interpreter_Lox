@@ -2,10 +2,10 @@
 
 # Compiler and flags
 CXX := g++
-CXXFLAGS := -Wall -Wextra -O2
+CXXFLAGS := -Wall -Werror -Weffc++ -Wextra -Wconversion -Wsign-conversion -Wextra -O2 -pedantic-errors -ggdb -std=c++17 -Iinclude
 
 # Source and output
-SRC := main.cpp
+SRC := main.cpp Lox.cc Scanner.cpp
 OUT_DIR := build
 OUT := $(OUT_DIR)/main
 
