@@ -13,16 +13,16 @@ void lox::run(std::string code)
   std::list<Token> tokens = scanner->scanTokens();
 
   //For now print the tokens.
-  for(Token token: tokens) 
+  for(Token token: tokens)
   {
       std::cout << "Token  " << token.convertToString() << std::endl;
   }
 }
 
-void lox::runFile(std::string fileName) 
+void lox::runFile(std::string fileName)
 {
   std::ifstream allBytes(fileName);
-  if (allBytes.is_open()) 
+  if (allBytes.is_open())
   {
     std::string buff;
     allBytes >> buff;
@@ -30,8 +30,8 @@ void lox::runFile(std::string fileName)
     if(hadError) return;
         // return EX_DATAERR;
     std::cout << "Now printing...." << std::endl;
-  } 
-  else 
+  }
+  else
   {
     std::cerr << "Error : Could Not Open file" << std::endl;
   }
